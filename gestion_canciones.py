@@ -14,12 +14,13 @@ def carga_canciones():
         print(mostrar)    
     return lista_canciones
 
-def insertar_canciones():
+def insertar_canciones(lista_canciones):
     with open("biblioteca.txt" , "a") as fichero:
         cancion = input("Inserta una cancion: ")
         artista = input("ahora el artista: ")
         genero = input("por ultimo el genero: ")
-        fichero.write(cancion.capitalize() +" - "+ artista.capitalize() +" - "+ genero.capitalize()+"\n")
+        fichero.write("\n"+cancion.capitalize() +" - "+ artista.capitalize() +" - "+ genero.capitalize())
+    return lista_canciones
 
 #def insertar_canciones2():
 #    with open("blibioteca.txt", "a") as fichero: 
@@ -36,7 +37,13 @@ def insertar_canciones():
 #        print(""+ dic + "")   
 
 def eliminar_canciones(lista_canciones , cancion,artista,genero):
-    print("")
+    cancion_fuera = {cancion:"Purple Haze",artista:"Jimi Hendrix",genero:"classic"}
+    
+    lista_canciones = [cancion_dic for cancion_dic in lista_canciones != cancion_fuera]
+    with open("biblioteca.txt", "w") as fichero:
+        fichero.write(lista_canciones)
+
+    return lista_canciones
         
 
 def guardar_canciones():
@@ -45,4 +52,8 @@ def guardar_canciones():
 
 carga_canciones()
 
-insertar_canciones()
+#insertar_canciones()
+
+
+eliminar_canciones()
+
